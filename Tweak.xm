@@ -32,9 +32,8 @@
 
 -(void)layoutSubviews {
     %orig;
-    UIImageView *_tintView = MSHookIvar<UIImageView *>(self, "_tintView");
+    MSHookIvar<UIImageView *>(self, "_tintView").hidden = YES;
     //Hide the folder background when open
-    _tintView.hidden = YES;
 }
 
 %end
@@ -98,9 +97,8 @@
 
 -(void)layoutSubviews {
     %orig;
-    UIView *_batteryBlurView = MSHookIvar<UIView *>(self, "_batteryBlurView");
+    MSHookIvar<UIView *>(self, "_batteryBlurView").hidden = YES;
     //Hide the black background on lock screen charging view (1 device only)
-    _batteryBlurView.hidden = YES;
 }
 
 %end
@@ -113,11 +111,9 @@
 
 -(void)layoutSubviews {
     %orig;
-    UIView *_externalBatteryBlurView = MSHookIvar<UIView *>(self, "_externalBatteryBlurView");
-    UIView *_internalBatteryBlurView = MSHookIvar<UIView *>(self, "_internalBatteryBlurView");
+    MSHookIvar<UIView *>(self, "_externalBatteryBlurView").hidden = YES;
+    MSHookIvar<UIView *>(self, "_internalBatteryBlurView").hidden = YES;
     //Hide the black background on lock screen charging view (2 devices only)
-    _externalBatteryBlurView.hidden = YES;
-    _internalBatteryBlurView.hidden = YES;
 }
 
 %end
